@@ -6,9 +6,7 @@ import com.css.demo.mapper.StuMapper;
 import com.css.demo.pojo.Stu;
 import com.css.demo.pojo.StuPO;
 import com.css.demo.pojo.StuVO;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
