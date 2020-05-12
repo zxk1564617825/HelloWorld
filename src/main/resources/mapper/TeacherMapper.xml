@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.css.demo.mapper.TeacherMapper">
+    <!--课程全查-->
+    <select id="findCourseAll" resultType="com.css.demo.pojo.Course">
+        SELECT
+            *
+        FROM
+            t_course
+    </select>
+    <!--教师全查-->
+    <select id="findAll" resultType="com.css.demo.pojo.Teacher">
+        SELECT
+            tea.*, cou.cname
+        FROM
+            t_teacher tea
+        LEFT JOIN t_course cou ON tea.cid = cou.cid
+        ORDER BY tea.tid ASC
+    </select>
+    <!--单查-->
+    <select id="findOne" resultType="com.css.demo.pojo.Teacher" parameterType="java.lang.Integer">
+        SELECT
+            tea.*, cou.cname
+        FROM
+            t_teacher tea
+        LEFT JOIN t_course cou ON tea.cid = cou.cid
+        WHERE
+            tea.tid = #{tid}
+    </select>
+    <!--添加-->
+    <insert id="insertOne" parameterType="com.css.demo.pojo.Teacher">
+        INSERT INTO t_teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tname != null">
+                tname,
+            </if>
+            <if test="tage != null">
+                tage,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="tname != null">
+                #{tname},
+            </if>
+            <if test="tage != null">
+                #{tage},
+            </if>
+            <if test="cid != null">
+                #{cid},
+            </if>
+        </trim>
+    </insert>
+    <!--修改-->
+    <update id="updateOne" parameterType="com.css.demo.pojo.Teacher">
+        UPDATE t_teacher
+        <set>
+            <if test="tname != null">
+                tname = #{tname},
+            </if>
+            <if test="tage != null">
+                tage = #{tage},
+            </if>
+            <if test="cid != null">
+                cid = #{cid},
+            </if>
+        </set>
+        WHERE
+            tid = #{tid}
+    </update>
+    <!--删除-->
+    <delete id="deleteOne">
+        DELETE FROM t_teacher WHERE tid = #{tid}
+    </delete>
+    <!--批删-->
+    <delete id="deleteByIds">
+        DELECT FROM t_teacher WHERE tid IN
+        <foreach collection="list" index="," open="(" close=")" separator="," item="l">
+            ${l}
+        </foreach>
+    </delete>
+</mapper>
