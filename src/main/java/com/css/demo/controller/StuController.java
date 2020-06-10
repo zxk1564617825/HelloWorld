@@ -1,5 +1,6 @@
 package com.css.demo.controller;
 
+import com.css.demo.pojo.Sss;
 import com.css.demo.pojo.StuPO;
 import com.css.demo.pojo.StuVO;
 import com.css.demo.service.StuService;
@@ -42,5 +43,17 @@ public class StuController {
     @ApiOperation("全查通查")
     public CallRespose findStu(@RequestBody StuVO stuVO){
         return CallRespose.success(stuService.getStu(stuVO));
+    }
+
+    @PostMapping("/test_sss")
+    @ApiOperation("测试ssss")
+    public CallRespose testSss(){
+        return CallRespose.success(stuService.testSss());
+    }
+
+    @PostMapping("/getTime")
+    @ApiOperation("getTime")
+    public CallRespose getTime(){
+        return CallRespose.success(stuService.getTime());
     }
 }

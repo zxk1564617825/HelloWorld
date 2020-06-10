@@ -1,8 +1,8 @@
 package com.css.demo.constants;
 
 public enum ErrorConstants {
-    SUCCESS("0000","成功"),
-    FAILED("1111","失败"),
+    SUCCESS("000000","成功"),
+    FAILED("111111","失败"),
     SYSTEM_ERROR("04-4-001","系统异常"),
     LIST_NULL("LIST_NULL","list集合为空");
 

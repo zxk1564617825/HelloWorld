@@ -3,8 +3,17 @@
 <mapper namespace="com.css.demo.mapper.StuMapper">
     <select id="getStu" resultType="com.css.demo.pojo.Stu">
         SELECT * FROM stu WHERE id in
-        <foreach collection="stuVO.ids" index="index" item="l" open="(" close=")" separator=",">
-            #{l,jdbcType=INTEGER}
-        </foreach>
+ 00    </select>
+    <select id="getSss" resultType="com.css.demo.pojo.Sss">
+        SELECT * FROM sss
+    </select>
+    <select id="getTime" resultType="com.css.demo.pojo.GetTime">
+        SELECT
+            create_time,
+            COUNT(create_time) create_time_num
+        FROM
+            sss
+        GROUP BY
+            create_time DESC
     </select>
 </mapper>

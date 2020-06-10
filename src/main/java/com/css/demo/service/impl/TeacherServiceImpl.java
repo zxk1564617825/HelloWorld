@@ -1,8 +1,9 @@
-package com.css.demo.service;
+package com.css.demo.service.impl;
 
 import com.css.demo.mapper.TeacherMapper;
 import com.css.demo.pojo.Course;
 import com.css.demo.pojo.Teacher;
+import com.css.demo.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ import java.util.List;
  **/
 @Service
 @Slf4j
-public class TeacherServiceImpl implements TeacherService{
+public class TeacherServiceImpl implements TeacherService {
 
     @Resource
     private TeacherMapper teacherMapper ;
@@ -53,6 +54,8 @@ public class TeacherServiceImpl implements TeacherService{
      */
     @Override
     public Teacher findOne(Integer tid) {
+        int i = teacherMapper.oneFind(tid);
+        System.out.println("--------------->>>>>>>"+i);
         return teacherMapper.findOne(tid);
     }
     /**

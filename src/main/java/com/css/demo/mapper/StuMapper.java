@@ -1,5 +1,7 @@
 package com.css.demo.mapper;
 
+import com.css.demo.pojo.GetTime;
+import com.css.demo.pojo.Sss;
 import com.css.demo.pojo.Stu;
 import com.css.demo.pojo.StuVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +18,8 @@ import java.util.List;
 @Mapper
 public interface StuMapper {
     List<Stu> getStu(@Param("stuVO") StuVO stuVO);
+
+    List<Sss> getSss();
+
+    List<GetTime> getTime();
 }

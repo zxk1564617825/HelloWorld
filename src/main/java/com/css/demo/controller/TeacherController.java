@@ -3,17 +3,20 @@ package com.css.demo.controller;
 import com.css.demo.api.TeacherApi;
 import com.css.demo.pojo.Teacher;
 import com.css.demo.pojo.TeacherVO;
+import com.css.demo.pojo.TidVO;
 import com.css.demo.service.TeacherService;
 import com.css.demo.util.CallRespose;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * @ClassName TeacherController
@@ -56,15 +59,20 @@ public class TeacherController implements TeacherApi {
     /**
      * @Description 单查
      * @Author 风住尘
-     * @param tid
+     * @param tidVO
      * @return com.css.demo.util.CallRespose
      * @Date 2020/5/11 9:13
      */
     @Override
     @ApiOperation("单查")
     @PostMapping("find_one")
-    public CallRespose findOne(@RequestBody Integer tid){
-        Teacher teacher = teacherService.findOne(tid);
+    public CallRespose findOne(@RequestBody @Valid TidVO tidVO,BindingResult bindingResult){
+        System.out.println("tidVO:"+tidVO);
+        //参数校验
+        for (ObjectError error : bindingResult.getAllErrors()) {
+            return CallRespose.error(error.getDefaultMessage());
+        }
+        Teacher teacher = teacherService.findOne(tidVO.getTid());
         if(teacher!=null){
             return CallRespose.success(teacher);
         }else{
@@ -81,7 +89,11 @@ public class TeacherController implements TeacherApi {
     @Override
     @ApiOperation("单条添加")
     @PostMapping("insert_one")
-    public CallRespose insertOne(@RequestBody Teacher teacher){
+    public CallRespose insertOne(@RequestBody  @Valid Teacher teacher, BindingResult bindingResult){
+        // 如果有参数校验失败，会将错误信息封装成对象组装在BindingResult里
+        for (ObjectError error : bindingResult.getAllErrors()) {
+            return CallRespose.error("传参有误！");
+        }
         boolean flag = teacherService.insertOne(teacher);
         if(flag){
             return CallRespose.success(flag);
@@ -143,5 +155,7 @@ public class TeacherController implements TeacherApi {
             return CallRespose.error("删除失败！");
         }
     }
+
+
 
 }

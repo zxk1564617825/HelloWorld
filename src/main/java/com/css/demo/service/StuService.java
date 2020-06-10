@@ -1,7 +1,11 @@
 package com.css.demo.service;
 
+import com.css.demo.pojo.GetTime;
+import com.css.demo.pojo.Sss;
 import com.css.demo.pojo.StuPO;
 import com.css.demo.pojo.StuVO;
+
+import java.util.List;
 
 
 /**
@@ -12,4 +16,8 @@ import com.css.demo.pojo.StuVO;
  **/
 public interface StuService {
     StuPO getStu(StuVO stuVO);
+
+    List<Sss> testSss();
+
+    List<GetTime> getTime();
 }

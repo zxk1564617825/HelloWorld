@@ -2,7 +2,9 @@ package com.css.demo.api;
 
 import com.css.demo.pojo.Teacher;
 import com.css.demo.pojo.TeacherVO;
+import com.css.demo.pojo.TidVO;
 import com.css.demo.util.CallRespose;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -17,9 +19,9 @@ public interface TeacherApi {
 
     CallRespose findAll();
 
-    CallRespose findOne(Integer tid);
+    CallRespose findOne(TidVO tidVO,BindingResult bindingResult);
 
-    CallRespose insertOne(Teacher teacher);
+    CallRespose insertOne(Teacher teacher, BindingResult bindingResult);
 
     CallRespose updateOne(Teacher teacher);
 

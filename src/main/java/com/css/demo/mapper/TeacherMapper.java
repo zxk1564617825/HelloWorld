@@ -70,4 +70,13 @@ public interface TeacherMapper {
      * @Date 2020/5/11 9:12
      */
     int deleteByIds(List<Integer> list);
+
+    /**
+     * @Description 单查
+     * @Author 风住尘
+     * @param tid
+     * @return int
+     * @Date 2020/6/4 8:45
+     */
+    int oneFind(Integer tid);
 }

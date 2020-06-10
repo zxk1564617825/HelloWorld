@@ -1,11 +1,10 @@
-package com.css.demo.service;
+package com.css.demo.service.impl;
 
 import com.css.demo.constants.ErrorConstants;
 import com.css.demo.exception.BusinessRuntimeException;
 import com.css.demo.mapper.StuMapper;
-import com.css.demo.pojo.Stu;
-import com.css.demo.pojo.StuPO;
-import com.css.demo.pojo.StuVO;
+import com.css.demo.pojo.*;
+import com.css.demo.service.StuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +34,17 @@ public class StuServiceImpl implements StuService {
         }else{
             throw new BusinessRuntimeException(ErrorConstants.LIST_NULL.getCode(),ErrorConstants.LIST_NULL.getMsg());
         }
+    }
+
+    @Override
+    public  List<Sss> testSss() {
+        List<Sss> s = stuMapper.getSss();
+        return s;
+    }
+
+    @Override
+    public List<GetTime> getTime() {
+        List<GetTime> list = stuMapper.getTime();
+        return list;
     }
 }

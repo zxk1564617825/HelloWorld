@@ -28,12 +28,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--（新版本）swagger增强工具依赖包，方便生成接口文档。非必须导入-->
-        <!--<dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>2.0.1</version>
-        </dependency>-->
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

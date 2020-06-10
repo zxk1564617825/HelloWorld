@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.css.demo.mapper.CourseMapper">
+    <sql id="courseMap">
+        course_id,course_name,course_desc,
+        DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%s') create_time
+        ,teacher_id
+    </sql>
+    <select id="findCourseAll" resultType="com.css.demo.pojo.NewCourse">
+        SELECT
+            <include refid="courseMap"/>
+        FROM
+            course
+    </select>
+</mapper>

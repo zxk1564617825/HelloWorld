@@ -81,4 +81,15 @@
             ${l}
         </foreach>
     </delete>
+    <!--单查-->
+    <select id="oneFind" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT
+            count(tea.tid)
+        FROM
+            t_teacher tea
+        LEFT JOIN t_course cou ON tea.cid = cou.cid
+        WHERE
+            tea.tid = #{tid}
+    </select>
+
 </mapper>
